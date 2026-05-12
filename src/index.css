@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --bg: #050505;
+    --bg-2: #0a0a0f;
+    --indigo: #1E1B4B;
+    --indigo-2: #312E81;
+    --magenta: #86198F;
+    --magenta-glow: #D946EF;
+    --neon: #39FF14;
+    --neon-soft: rgba(57, 255, 20, 0.4);
+    --text: #F8FAFC;
+    --muted: #94A3B8;
+    --border: rgba(57, 255, 20, 0.18);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+::selection {
+    background: var(--neon);
+    color: #000;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0a0a0f;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #86198F, #39FF14);
+    border-radius: 4px;
+}
+
+/* Typography helpers */
+.font-display {
+    font-family: "Unbounded", "Space Grotesk", sans-serif;
+    letter-spacing: -0.02em;
+}
+.font-mono {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+.font-accent {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+}
+
+/* Grid background */
+.grid-bg {
+    background-image:
+        linear-gradient(rgba(57, 255, 20, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(57, 255, 20, 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 100%);
+}
+
+.noise {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
+}
+
+/* Glitch text */
+.glitch {
+    position: relative;
+    color: var(--text);
+    text-shadow:
+        0.04em 0 0 rgba(217, 70, 239, 0.6),
+        -0.04em -0.02em 0 rgba(57, 255, 20, 0.55);
+    animation: glitch 3.6s infinite steps(1, end);
+}
+@keyframes glitch {
+    0%, 88%, 100% { transform: none; }
+    90% { transform: translate(-1px, 0); }
+    92% { transform: translate(2px, -1px); }
+    94% { transform: translate(-2px, 1px); }
+    96% { transform: translate(1px, 0); }
+}
+
+/* Magenta neon glow */
+.neon-glow {
+    box-shadow: 0 0 0 1px rgba(57,255,20,0.4), 0 0 24px -2px rgba(57,255,20,0.45), 0 0 60px -10px rgba(134,25,143,0.5);
+}
+
+/* Magnetic cursor */
+.cursor-dot, .cursor-ring {
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+}
+.cursor-dot {
+    width: 6px; height: 6px;
+    background: #39FF14;
+    border-radius: 999px;
+}
+.cursor-ring {
+    width: 36px; height: 36px;
+    border: 1.5px solid #39FF14;
+    border-radius: 999px;
+    transition: width .2s ease, height .2s ease, opacity .2s ease;
+}
+
+/* Marquee gradient mask */
+.marquee-mask {
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+/* Terminal blinking cursor */
+.blink {
+    animation: blink 1s steps(1) infinite;
+}
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* Skill bar shimmer */
+.bar-shimmer {
+    background: linear-gradient(90deg, rgba(57,255,20,0.0) 0%, rgba(57,255,20,0.4) 50%, rgba(217,70,239,0.4) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2.4s linear infinite;
+}
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Section divider */
+.section-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(57,255,20,0.4), rgba(217,70,239,0.4), transparent);
+}
+
+/* Hide cursor on touch devices */
+@media (hover: none) {
+    .cursor-dot, .cursor-ring { display: none; }
+}
+
+a, button { cursor: none; }
+@media (hover: none) {
+    a, button { cursor: pointer; }
+}
