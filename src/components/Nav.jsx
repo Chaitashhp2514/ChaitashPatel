@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const links = [
-  { id: "hero", label: "00 / Home" },
-  { id: "skills", label: "01 / Skills" },
-  { id: "projects", label: "02 / Work" },
-  { id: "contact", label: "03 / Contact" },
+  { id: "hero", label: "Home" },
+  { id: "skills", label: "Skills" },
+  { id: "projects", label: "Work" },
+  { id: "contact", label: "Contact" },
 ];
 
 export default function Nav() {
@@ -47,7 +47,7 @@ export default function Nav() {
           className="flex items-center gap-2 font-mono text-sm tracking-widest"
         >
           <span className="inline-block w-2 h-2 rounded-full bg-[#39FF14] shadow-[0_0_12px_#39FF14]" />
-          <span className="text-white">chaitash<span className="text-[#39FF14]">.dev</span></span>
+          <span className="text-white">chaitash<span className="text-[#39FF14]">.developer</span></span>
         </a>
 
         <nav className="hidden md:flex items-center gap-1">
