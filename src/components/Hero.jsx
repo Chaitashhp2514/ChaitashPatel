@@ -119,7 +119,7 @@ export default function Hero() {
               className="mt-10 flex flex-wrap items-center gap-3"
             >
               <a
-                href={profile.resumeUrl}
+                href={"https://drive.google.com/file/d/1qa3xFDgxEK9xmhXwblXN-f0U_Q8CUwQF/view?usp=sharing"}
                 data-testid="hero-resume-btn"
                 data-magnetic
                 className="group relative inline-flex items-center gap-3 bg-[#39FF14] text-black font-mono text-xs uppercase tracking-[0.2em] px-6 py-4 rounded-sm hover:bg-white transition-colors"
